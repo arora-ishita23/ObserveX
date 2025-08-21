@@ -1,114 +1,151 @@
-# Spacecraft AI Detection System
+🚀 ObserveX – Making Your Face the New ID
 
-A real-time spacecraft component detection system using YOLOv8 and Next.js.
+ObserveX eliminates ID cards by making the human face the new ID.
+Our system combines YOLOv12 real-time detection, face recognition, and liveness checks to secure enterprises.
 
-## Features
+📌 Problem
 
-- 🚀 **Real YOLOv8 Model**: Uses your trained `best.pt` model for actual object detection
-- 🌐 **Modern Web Interface**: Beautiful space-themed UI with animations
-- 📸 **Image Upload**: Drag & drop or click to upload spacecraft images
-- 🔍 **Real-time Detection**: Instant AI-powered component identification
-- 📊 **Detailed Results**: Confidence scores and bounding box information
-- 🎨 **Responsive Design**: Works on desktop and mobile devices
+🚪 Tailgating (unauthorized entry by following others)
+
+🔐 Insider threats & data theft
+
+❌ No continuous monitoring once inside restricted zones
+
+💡 Solution
+
+Real-time alerts in the control room
+
+Tailgating & spoof prevention
+
+Continuous monitoring inside enterprise zones
+
+Frictionless & eco-friendly security
+
+🎯 Unique Selling Proposition (USP)
+
+Unlike existing access systems that only check at entry points,
+ObserveX continuously monitors presence inside and instantly alerts security if unauthorized persons are detected.
 
 ## Quick Start
+Download the model from- https://drive.google.com/drive/folders/1gU2Kvp05a5P93pYvjH-C4zUZ1j_f__Wd?usp=sharing
+put the model in /api folder
 
 ### Option 1: Automatic Setup (Windows)
 1. Double-click `start.bat` to automatically install dependencies and start both services
 
 ### Option 2: Manual Setup
 
-#### 1. Install Python Dependencies
+#### 1. Start the Python Backend
 ```bash
 cd api
-pip install -r requirements.txt
-cd ..
-```
-
-#### 2. Start the Python Backend
-```bash
-cd api
-python detect.py
+python main.py
 ```
 The backend will run on `http://localhost:8000`
 
-#### 3. Start the Next.js Frontend
+#### 2. Start the Next.js Frontend
 ```bash
-npm run dev
+npm install
+yarn install
+yarn run dev
 ```
 The frontend will run on `http://localhost:3000`
 
-## Project Structure
+📈 Market Opportunity
 
-```
-space-ai-detector/
-├── api/
-│   ├── detect.py          # Python FastAPI backend with YOLO
-│   └── requirements.txt   # Python dependencies
-├── public/
-│   └── models/
-│       └── best.pt        # Your trained YOLOv8 model
-├── components/            # React components
-├── lib/
-│   └── onnx-processor.ts # API integration (renamed for compatibility)
-└── app/                   # Next.js app directory
-```
+🌍 Global Market: $15.8B in 2024 → $26B+ by 2030
 
-## How It Works
+🇮🇳 India: Growing at 15% CAGR (IT parks, R&D labs, financial institutions)
 
-1. **Image Upload**: Users upload spacecraft images through the web interface
-2. **API Call**: Frontend sends image to Python backend via FastAPI
-3. **YOLO Detection**: Backend uses your `best.pt` model for object detection
-4. **Results Display**: Detected objects are shown with confidence scores and bounding boxes
+📊 Demand: Rising adoption of AI-powered enterprise security
 
-## API Endpoints
+🧩 Novelty & Differentiation
 
-- `POST /api/detect` - Upload image and get detection results
-- `GET /api/health` - Check if backend is running
+Real-time in-room unauthorized presence alerts
 
-## Model Integration
+AI-based tailgating prevention (multi-face tracking at doors)
 
-The system uses your trained YOLOv8 model (`public/models/best.pt`) for:
-- Real object detection (not simulation)
-- Actual confidence scores
-- Real bounding box coordinates
-- Your custom class labels
+Advanced spoofing prevention (3D depth, blink detection)
 
-## Troubleshooting
+🏢 Applications in Enterprises
 
-### Backend Issues
-- Ensure Python 3.8+ is installed
-- Install dependencies: `pip install -r api/requirements.txt`
-- Check if port 8000 is available
+Secure R&D labs
 
-### Frontend Issues
-- Install Node.js dependencies: `npm install`
-- Clear `.next` folder if build errors occur
-- Check if port 3000 is available
+IT parks & data centers
 
-### Model Issues
-- Ensure `best.pt` is in `public/models/` directory
-- Verify the model file is not corrupted
-- Check model class names in the Python backend
+Financial institutions & banks
 
-## Development
+Restricted manufacturing zones
 
-### Adding New Features
-1. Frontend: Edit React components in `components/`
-2. Backend: Modify `api/detect.py` for new API endpoints
-3. Styling: Update `app/globals.css` for theme changes
+💼 Business Model
 
-### Model Updates
-1. Replace `public/models/best.pt` with your new model
-2. Update class names in `api/detect.py` if needed
-3. Restart the backend service
+SaaS subscription (per camera / per location)
 
-## Performance
+Enterprise licensing contracts
 
-- **Inference Time**: Depends on your model size and hardware
-- **Memory Usage**: YOLOv8 model loaded in Python backend
-- **Scalability**: Can be deployed to cloud services
+Long-term partnerships with MNCs & IT companies
 
-## License
+⚙️ Project Setup
+📂 Project Structure
+ObserveX/
+├── api/                  # Backend YOLO & face recognition logic
+│   ├── main.py           # Python API for YOLOv12 & recognition
+│   ├── yolo12l.pt        # Trained YOLOv12 model weights
+├── app/                  # Next.js frontend
+│   ├── page.tsx          # Main UI entry page
+│   ├── layout.tsx        # Layout & global structure
+│   ├── globals.css       # Global styles
+├── lib/                  # Utility & model processing
+│   ├── onnx-processor.ts # ONNX inference handler
+│   ├── utils.ts
+├── public/               # Static assets
+├── styles/               # Tailwind / custom styles
+├── types/                # TypeScript types
+├── components/           # Reusable UI components
+├── hooks/                # Custom React hooks
+├── package.json          # Dependencies
+├── tailwind.config.js    # Tailwind setup
+└── start.bat             # Quick start script (Windows)
 
-This project is for educational and research purposes. 
+🛠️ Installation & Setup
+1️⃣ Clone Repository
+git clone https://github.com/your-username/ObserveX.git
+cd ObserveX
+
+2️⃣ Install Dependencies
+# Install frontend dependencies
+npm install
+# OR
+pnpm install
+
+3️⃣ Backend Setup (Python API)
+cd api
+pip install -r requirements.txt
+
+4️⃣ Run Development Servers
+
+Backend (FastAPI / Flask):
+
+python main.py
+
+
+Frontend (Next.js):
+
+npm run dev
+
+🔍 How It Works
+
+Upload or capture a live image through the web UI
+
+Backend runs YOLOv12 detection + face recognition + liveness check
+
+Results are returned and displayed in real-time on the dashboard
+
+Unauthorized presence alerts are triggered instantly
+
+🤝 Contributing
+
+We welcome contributions! Please fork the repo and submit a PR.
+
+📜 License
+
+This project is licensed under the MIT License.
