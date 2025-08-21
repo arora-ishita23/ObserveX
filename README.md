@@ -1,87 +1,114 @@
-# ObserveX – AI-Powered Enterprise Security
+# Spacecraft AI Detection System
 
-## Running Instructions
+A real-time spacecraft component detection system using YOLOv8 and Next.js.
 
-### Frontend (React / Next.js)
+## Features
 
-```bash
-yarn install
-yarn run dev
-```
+- 🚀 **Real YOLOv8 Model**: Uses your trained `best.pt` model for actual object detection
+- 🌐 **Modern Web Interface**: Beautiful space-themed UI with animations
+- 📸 **Image Upload**: Drag & drop or click to upload spacecraft images
+- 🔍 **Real-time Detection**: Instant AI-powered component identification
+- 📊 **Detailed Results**: Confidence scores and bounding box information
+- 🎨 **Responsive Design**: Works on desktop and mobile devices
 
-### Backend (FastAPI)
+## Quick Start
 
+### Option 1: Automatic Setup (Windows)
+1. Double-click `start.bat` to automatically install dependencies and start both services
+
+### Option 2: Manual Setup
+
+#### 1. Install Python Dependencies
 ```bash
 cd api
-python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
+pip install -r requirements.txt
+cd ..
 ```
 
----
+#### 2. Start the Python Backend
+```bash
+cd api
+python detect.py
+```
+The backend will run on `http://localhost:8000`
 
-## Overview
+#### 3. Start the Next.js Frontend
+```bash
+npm run dev
+```
+The frontend will run on `http://localhost:3000`
 
-ObserveX is an AI-driven enterprise security solution that replaces outdated ID cards and manual access systems with face-based identity verification.
-Our system uses YOLOv12 real-time detection, facial recognition, and liveness checks to prevent unauthorized access, insider threats, and data theft.
+## Project Structure
 
-Unlike traditional CCTV systems, ObserveX not only monitors but also provides real-time alerts to security teams when unknown individuals or tailgating attempts are detected.
+```
+space-ai-detector/
+├── api/
+│   ├── detect.py          # Python FastAPI backend with YOLO
+│   └── requirements.txt   # Python dependencies
+├── public/
+│   └── models/
+│       └── best.pt        # Your trained YOLOv8 model
+├── components/            # React components
+├── lib/
+│   └── onnx-processor.ts # API integration (renamed for compatibility)
+└── app/                   # Next.js app directory
+```
 
-We also integrate a voice assistant model, enabling security personnel to control the system, request identity checks, and trigger alerts hands-free via voice commands.
+## How It Works
 
----
+1. **Image Upload**: Users upload spacecraft images through the web interface
+2. **API Call**: Frontend sends image to Python backend via FastAPI
+3. **YOLO Detection**: Backend uses your `best.pt` model for object detection
+4. **Results Display**: Detected objects are shown with confidence scores and bounding boxes
 
-## Key Features
+## API Endpoints
 
-* **Face as the New ID** – No cards, no duplication, no loss.
-* **Real-Time Alerts** – Unauthorized access instantly flagged in the security room.
-* **Spoofing & Tailgating Prevention** – Advanced AI models detect fake attempts.
-* **Seamless CCTV Integration** – Works with existing camera infrastructure.
-* **Voice Assistant Model** – Enables voice-based commands for access checks, alert triggers, and system queries.
+- `POST /api/detect` - Upload image and get detection results
+- `GET /api/health` - Check if backend is running
 
----
+## Model Integration
 
-## Technology Stack
+The system uses your trained YOLOv8 model (`public/models/best.pt`) for:
+- Real object detection (not simulation)
+- Actual confidence scores
+- Real bounding box coordinates
+- Your custom class labels
 
-* **Computer Vision**: YOLOv12, OpenCV
-* **Face Recognition**: Deep Learning embeddings
-* **Liveness Detection**: Anti-spoofing AI
-* **Voice Assistant**: Speech-to-Text + NLP + Command Execution
-* **Backend**: Python, FastAPI
-* **Frontend**: React / Next.js
-* **Deployment**: Cloud / On-premise hybrid
+## Troubleshooting
 
----
+### Backend Issues
+- Ensure Python 3.8+ is installed
+- Install dependencies: `pip install -r api/requirements.txt`
+- Check if port 8000 is available
 
-## Market Problem
+### Frontend Issues
+- Install Node.js dependencies: `npm install`
+- Clear `.next` folder if build errors occur
+- Check if port 3000 is available
 
-Enterprises face growing threats of insider data theft, unauthorized access, and spoofing attacks. Traditional ID cards and manual CCTV monitoring are inefficient, error-prone, and reactive instead of proactive.
+### Model Issues
+- Ensure `best.pt` is in `public/models/` directory
+- Verify the model file is not corrupted
+- Check model class names in the Python backend
 
----
+## Development
 
-## ObserveX Solution
+### Adding New Features
+1. Frontend: Edit React components in `components/`
+2. Backend: Modify `api/detect.py` for new API endpoints
+3. Styling: Update `app/globals.css` for theme changes
 
-* **Frictionless Security** – Automated, contactless, and eco-friendly.
-* **AI-Powered Monitoring** – Real-time detection & alerts for unauthorized access.
-* **Voice-Enabled Control** – Security teams can interact with the system hands-free.
+### Model Updates
+1. Replace `public/models/best.pt` with your new model
+2. Update class names in `api/detect.py` if needed
+3. Restart the backend service
 
----
+## Performance
 
-## Target Market
+- **Inference Time**: Depends on your model size and hardware
+- **Memory Usage**: YOLOv8 model loaded in Python backend
+- **Scalability**: Can be deployed to cloud services
 
-* MNCs & Large Enterprises (R\&D labs, corporate offices, data centers)
-* Critical Infrastructure (Airports, BFSI, government facilities)
+## License
 
----
-
-## Competitive Advantage
-
-* Real-time security alerts (most competitors only log events).
-* Tailgating & spoofing prevention.
-* Voice-enabled AI assistant for enterprise security – unique USP.
-
----
-
-## Business Model
-
-* SaaS Subscription (per camera/month)
-* Enterprise Licensing
-* Custom Integrations & Analytics Add-ons
+This project is for educational and research purposes. 
